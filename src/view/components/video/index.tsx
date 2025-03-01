@@ -3,15 +3,8 @@
 import { cn } from '@/lib/utils/style';
 import useBoolean from '@/lib/hooks/useBoolean';
 import { useRef, useState, useEffect } from 'react';
-import {
-  FaPlay,
-  FaPause,
-  FaExpand,
-  FaCompress,
-  FaVolumeUp,
-  FaExpandAlt,
-  FaVolumeMute,
-} from 'react-icons/fa';
+
+import { Iconify } from '../iconify';
 
 interface VideoProps {
   videoUrl: string;
@@ -137,9 +130,9 @@ export default function Video({ videoUrl, isWide, onWideToggle }: VideoProps) {
       {!hasPlayedOnce && (
         <button
           onClick={togglePlay}
-          className="text-error absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white py-6 pr-5.5 pl-6.5 text-2xl transition-colors duration-200 hover:opacity-80 md:py-8 md:pr-7.5 md:pl-8.5 md:text-4xl"
+          className="text-error absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white py-6 pr-5.5 pl-6.5 text-3xl transition-colors duration-200 hover:opacity-80 md:py-8 md:pr-7.5 md:pl-8.5 md:text-4xl"
         >
-          <FaPlay />
+          <Iconify icon="solar:play-bold" />
         </button>
       )}
 
@@ -166,7 +159,11 @@ export default function Video({ videoUrl, isWide, onWideToggle }: VideoProps) {
                 onClick={togglePlay}
                 className="cursor-pointer p-2 text-white transition-colors duration-200 hover:text-gray-300"
               >
-                {isPlaying ? <FaPause /> : <FaPlay />}
+                {isPlaying ? (
+                  <Iconify icon="mynaui:pause-solid" />
+                ) : (
+                  <Iconify icon="solar:play-bold" />
+                )}
               </button>
 
               {/* Duration display */}
@@ -181,9 +178,13 @@ export default function Video({ videoUrl, isWide, onWideToggle }: VideoProps) {
               <div className="flex items-center">
                 <button
                   onClick={toggleMute}
-                  className="cursor-pointer p-2 text-white transition-colors duration-200 hover:text-gray-300"
+                  className="cursor-pointer p-2 text-2xl text-white transition-colors duration-200 hover:text-gray-300"
                 >
-                  {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+                  {isMuted ? (
+                    <Iconify icon="mingcute:volume-off-fill" />
+                  ) : (
+                    <Iconify icon="mingcute:volume-fill" />
+                  )}
                 </button>
                 <input
                   type="range"
@@ -202,20 +203,28 @@ export default function Video({ videoUrl, isWide, onWideToggle }: VideoProps) {
                 {!isFullScreen && (
                   <button
                     onClick={onWideToggle}
-                    className="cursor-pointer p-2 text-white transition-colors duration-200 hover:text-gray-300 max-lg:hidden"
+                    className="cursor-pointer p-2 text-2xl text-white transition-colors duration-200 hover:text-gray-300 max-lg:hidden"
                     title={isWide ? 'Normal view' : 'Wide view'}
                   >
-                    {isWide ? <FaCompress /> : <FaExpand />}
+                    {isWide ? (
+                      <Iconify icon="uil:shrink" />
+                    ) : (
+                      <Iconify icon="ri:expand-horizontal-fill" />
+                    )}
                   </button>
                 )}
 
                 {/* Fullscreen button */}
                 <button
                   onClick={toggleFullScreen}
-                  className="cursor-pointer p-2 text-white transition-colors duration-200 hover:text-gray-300"
+                  className="cursor-pointer p-2 text-2xl text-white transition-colors duration-200 hover:text-gray-300"
                   title={isFullScreen ? 'Exit Fullscreen' : 'Fullscreen'}
                 >
-                  <FaExpandAlt />
+                  {isFullScreen ? (
+                    <Iconify icon="material-symbols:fullscreen-exit-rounded" />
+                  ) : (
+                    <Iconify icon="mingcute:fullscreen-fill" />
+                  )}
                 </button>
               </div>
             </div>
