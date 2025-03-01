@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cairo: var(--cairo);
+
+  /* BG Colors */
+  --color-default: #fff;
+  --color-neutral: #f5f9fa;
+  --color-divider: #e6e6e6;
+
+  /* Text Colors */
+  --color-primary: #181818;
+  --color-secondary: #8092b9;
+
+  /* Theme Colors */
+  --color-success: #8092b9;
+  --color-error: #e6e6e6;
+  --color-info: #485293;
+}
