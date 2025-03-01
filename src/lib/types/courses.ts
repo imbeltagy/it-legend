@@ -15,3 +15,11 @@ export interface Course {
     youtube: string;
   };
 }
+
+export interface Comment {
+  id: string;
+  avatar: string;
+  name: string;
+  date: Date;
+  comment: string;
+}

@@ -14,10 +14,10 @@
 
   /* Text Colors */
   --color-primary: #181818;
-  --color-secondary: #d0d0d0;
+  --color-secondary: #808080;
 
   /* Theme Colors */
-  --color-success: #8092b9;
+  --color-success: #41b59d;
   --color-error: #e54860;
   --color-info: #485293;
 }
@@ -139,6 +139,18 @@
     @apply bg-background text-foreground;
   }
   .container {
-    @apply px-2;
+    @apply px-4;
+  }
+}
+
+@layer components {
+  .icon-button {
+    @apply border-divider hover:bg-secondary hover:text-default text-secondary block rounded-full border p-3 text-2xl transition-colors;
+  }
+  .button {
+    @apply flex cursor-pointer items-center gap-1 rounded-md px-8 py-4 font-bold text-white transition-colors;
+    &-success {
+      @apply bg-success hover:bg-emerald-600 active:bg-emerald-700;
+    }
   }
 }
