@@ -1,4 +1,9 @@
 {
+  "Nav": {
+    "home": "Home",
+    "courses": "Courses",
+    "course_details": "Course Details"
+  },
   "MetaData": {
     "title": "Courses | IT Legend",
     "description": "Get started with courses from IT Legend"

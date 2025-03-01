@@ -1,7 +1,9 @@
 import { Locale } from '@/lib/types/i18n';
+import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 export default async function Page() {
+  redirect('/courses/1');
   return null;
 }
 

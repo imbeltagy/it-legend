@@ -1,4 +1,9 @@
 {
+  "Nav": {
+    "home": "الرئيسية",
+    "courses": "الدورات",
+    "course_details": "تفاصيل الدورة"
+  },
   "MetaData": {
     "title": "الدورات | IT Legend",
     "description": "ابدأ الدورات من IT Legend"
