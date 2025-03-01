@@ -9,14 +9,20 @@
     "description": "Get started with courses from IT Legend"
   },
   "CourseDetails": {
-    "materials": "Course Materials",
-    "duration": "Duration",
-    "lessons": "Lessons",
-    "enrolled": "Enrolled",
-    "language": "Language",
-    "student": "1 student",
-    "students": "{count}students",
-    "2_students": "2 students",
-    "comments": "Comments"
+    "Materials": {
+      "title": "Course Materials",
+      "duration": "Duration",
+      "lessons": "Lessons",
+      "enrolled": "Enrolled",
+      "language": "Language",
+      "student": "1 student",
+      "students": "{count} students",
+      "2_students": "2 students"
+    },
+    "Comments": {
+      "title": "Comments",
+      "placeholder": "Write a comment",
+      "submit": "Submit Review"
+    }
   }
 }

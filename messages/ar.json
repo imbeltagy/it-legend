@@ -9,14 +9,20 @@
     "description": "ابدأ الدورات من IT Legend"
   },
   "CourseDetails": {
-    "materials": "المواد الدراسية",
-    "duration": "المدة",
-    "lessons": "الدروس",
-    "enrolled": "المشتركين",
-    "language": "اللغة",
-    "student": "1 طالب",
-    "students": "{count} طلاب",
-    "2_students": "طالبان",
-    "comments": "التعليقات"
+    "Materials": {
+      "title": "المواد الدراسية",
+      "duration": "المدة",
+      "lessons": "الدروس",
+      "enrolled": "المشتركين",
+      "language": "اللغة",
+      "student": "1 طالب",
+      "students": "{count} طلاب",
+      "2_students": "طالبان"
+    },
+    "Comments": {
+      "title": "التعليقات",
+      "placeholder": "اكتب تعليق",
+      "submit": "ارسال تعليق"
+    }
   }
 }

@@ -148,9 +148,9 @@
     @apply border-divider hover:bg-secondary hover:text-default text-secondary block rounded-full border p-3 text-2xl transition-colors;
   }
   .button {
-    @apply flex cursor-pointer items-center gap-1 rounded-md px-8 py-4 font-bold text-white transition-colors;
-    &-success {
-      @apply bg-success hover:bg-emerald-600 active:bg-emerald-700;
-    }
+    @apply flex cursor-pointer items-center gap-1 rounded-md px-8 py-4 font-bold transition-colors;
+  }
+  .button-success {
+    @apply bg-success text-white hover:bg-emerald-600 active:bg-emerald-700;
   }
 }

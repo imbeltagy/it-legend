@@ -5,7 +5,7 @@ import { Course } from '@/lib/types/courses';
 import { Iconify } from '../components/iconify';
 
 export default function Materials({ course }: { course: Course }) {
-  const t = useTranslations('CourseDetails');
+  const t = useTranslations('CourseDetails.Materials');
 
   const fields = useMemo(() => {
     let students = '';
@@ -62,7 +62,7 @@ export default function Materials({ course }: { course: Course }) {
 
   return (
     <div className="w-full rounded-lg max-md:p-8 max-md:shadow-[-30px_-31px_106px_-94px_rgba(0,0,0,0.5)]">
-      <h2 className="text-xl font-bold tracking-wide md:text-3xl">{t('materials')}</h2>
+      <h2 className="text-xl font-bold tracking-wide md:text-3xl">{t('title')}</h2>
 
       <div className="mt-5 grid rounded-lg md:mt-8 md:grid-cols-2 md:gap-20 md:px-10 md:py-8 md:shadow-[0px_0px_177px_-60px_rgba(0,0,0,0.44)]">
         {renderColumn}
