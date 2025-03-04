@@ -23,6 +23,12 @@
       "title": "Comments",
       "placeholder": "Write a comment",
       "submit": "Submit Review"
+    },
+    "Topics": {
+      "title": "Topics for This Course",
+      "progress_label": "You",
+      "duration": "{duration} minutes",
+      "questions": "{count} questions"
     }
   }
 }

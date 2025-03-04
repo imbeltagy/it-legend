@@ -33,7 +33,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={localeSettings[locale].dir}>
-      <body className={`${cairo.variable} ${cairo.className} bg-default antialiased`}>
+      <body
+        className={`${cairo.variable} ${cairo.className} bg-default overflow-x-hidden antialiased`}
+      >
         <NextIntlClientProvider messages={messages}>
           <main className="bg-default">{children}</main>
         </NextIntlClientProvider>

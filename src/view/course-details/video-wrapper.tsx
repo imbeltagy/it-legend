@@ -32,11 +32,11 @@ export default function VideoWrapper({ course, topicsComponent, commentsComponen
       </div>
       <div
         className={cn(
-          'max-lg:order-2 max-lg:col-span-2',
-          isWide.value ? 'lg:order-1' : 'lg:row-span-2'
+          'max-lg:order-2 max-lg:col-span-2 lg:row-span-2',
+          isWide.value ? 'lg:order-1' : 'lg:row-span-3'
         )}
       >
-        sss
+        {topicsComponent}
       </div>
       <div className="max-lg:col-span-2">
         <Materials course={course} />

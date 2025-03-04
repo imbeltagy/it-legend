@@ -5,13 +5,17 @@ import { getCourse } from '@/lib/actions/course-actions';
 import VideoWrapper from '@/view/course-details/video-wrapper';
 
 export default async function Layout({
-  children,
+  children: _children,
   comments,
+  topics,
   params,
+  pdf,
 }: {
   children: React.ReactNode;
   comments: React.ReactNode;
+  topics: React.ReactNode;
   params: Promise<{ courseId: string }>;
+  pdf: React.ReactNode;
 }) {
   const { courseId } = await params;
 
@@ -28,8 +32,9 @@ export default async function Layout({
         ]}
       />
       <div className="container mx-auto py-4">
-        <VideoWrapper course={course} topicsComponent={children} commentsComponent={comments} />
+        <VideoWrapper course={course} topicsComponent={topics} commentsComponent={comments} />
       </div>
+      {pdf}
     </div>
   );
 }

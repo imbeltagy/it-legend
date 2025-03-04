@@ -23,6 +23,12 @@
       "title": "التعليقات",
       "placeholder": "اكتب تعليق",
       "submit": "ارسال تعليق"
+    },
+    "Topics": {
+      "title": "المواضيع لهذه الدورة",
+      "progress_label": "أنت",
+      "duration": "{duration} دقيقة",
+      "questions": "{count} سؤال"
     }
   }
 }

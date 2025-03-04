@@ -17,7 +17,9 @@
   --color-secondary: #808080;
 
   /* Theme Colors */
+  --color-success-light: #eefffc;
   --color-success: #41b59d;
+  --color-error-light: #ffecec;
   --color-error: #e54860;
   --color-info: #485293;
 }
