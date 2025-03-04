@@ -56,7 +56,7 @@ function AddComment() {
       />
       <button className="button button-success mt-4">
         {t('submit')}
-        <Iconify icon="tabler:arrow-right" className="text-xl" />
+        <Iconify icon="tabler:arrow-right" className="text-xl rtl:rotate-180" />
       </button>
     </div>
   );
