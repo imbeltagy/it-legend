@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { useRef } from 'react';
 import { cn } from '@/lib/utils/style';
 import { Course } from '@/lib/types/courses';
 import useBoolean from '@/lib/hooks/useBoolean';
@@ -17,6 +17,7 @@ interface Props {
 
 export default function VideoWrapper({ course, topicsComponent, commentsComponent }: Props) {
   const isWide = useBoolean();
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -24,43 +25,75 @@ export default function VideoWrapper({ course, topicsComponent, commentsComponen
         display: 'grid',
         gridTemplateColumns: '2fr 1fr',
       }}
-      className="gap-x-6 gap-y-12"
+      className="relative gap-x-6 gap-y-12"
     >
-      <div className={cn('col-span-2', !isWide.value && 'lg:col-span-1')}>
-        <Video videoUrl={course.video} isWide={isWide.value} onWideToggle={isWide.toggle} />
-        <ExternalLinks links={course.externalLinks} />
+      <div
+        ref={videoContainerRef}
+        className={cn(
+          'bg-default shadow-default top-0 z-50 col-span-2 py-4 max-lg:sticky max-lg:shadow-[0_4px_10px_-1px]',
+          !isWide.value && 'lg:col-span-1'
+        )}
+      >
+        <div className="container mx-auto">
+          <Video videoUrl={course.video} isWide={isWide.value} onWideToggle={isWide.toggle} />
+          <NavigationIcons videoContainerRef={videoContainerRef} />
+        </div>
       </div>
+
       <div
         className={cn(
-          'max-lg:order-2 max-lg:col-span-2 lg:row-span-2',
+          'container mx-auto max-lg:order-2 max-lg:col-span-2 lg:row-span-2',
           isWide.value ? 'lg:order-1' : 'lg:row-span-3'
         )}
       >
         {topicsComponent}
       </div>
+
       <div className="max-lg:col-span-2">
         <Materials course={course} />
       </div>
-      <div className="order-3 max-lg:col-span-2">{commentsComponent}</div>
+
+      <div className="order-3 container mx-auto max-lg:col-span-2">{commentsComponent}</div>
     </div>
   );
 }
 
-function ExternalLinks({ links }: { links: Course['externalLinks'] }) {
+function NavigationIcons({
+  videoContainerRef,
+}: {
+  videoContainerRef: React.RefObject<HTMLDivElement | null>;
+}) {
+  const scrollToElement = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element && videoContainerRef.current) {
+      const elementPosition = element.getBoundingClientRect();
+      const videoHeight = videoContainerRef.current.getBoundingClientRect().height;
+      window.scrollTo({
+        left: elementPosition.left,
+        top: elementPosition.top + window.scrollY - videoHeight - 20,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const navigationButtons = [
+    { id: 'topics', icon: 'mdi:book-open-variant' },
+    { id: 'comments', icon: 'mdi:comment-multiple' },
+    { id: 'leaderboard', icon: 'mdi:trophy' },
+    { id: 'ask-question', icon: 'mdi:help-circle' },
+  ];
+
   return (
-    <div className="mt-10 flex items-center gap-4 max-md:justify-center">
-      {Object.keys(links).map((key) => (
-        <Link key={key} href={links[key as 'facebook']} className="icon-button" target="_blank">
-          {icons[key as 'facebook']}
-        </Link>
+    <div className="mt-4 flex items-center gap-4 max-lg:justify-center lg:mt-10">
+      {navigationButtons.map((button) => (
+        <button
+          key={button.id}
+          className="icon-button cursor-pointer"
+          onClick={() => scrollToElement(button.id)}
+        >
+          <Iconify icon={button.icon} />
+        </button>
       ))}
     </div>
   );
 }
-
-const icons = {
-  facebook: <Iconify icon="mdi:facebook" />,
-  twitter: <Iconify icon="mdi:twitter" />,
-  linkedin: <Iconify icon="mdi:linkedin" />,
-  youtube: <Iconify icon="mdi:youtube" />,
-};

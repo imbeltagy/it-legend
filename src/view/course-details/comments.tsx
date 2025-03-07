@@ -9,7 +9,7 @@ export default function CourseComments({ comments }: { comments: Comment[] }) {
   const t = useTranslations('CourseDetails.Comments');
 
   return (
-    <div>
+    <div id="comments">
       <h2 className="text-xl font-bold tracking-wide md:text-3xl">{t('title')}</h2>
       <div>
         {comments.map((comment, index) => (
