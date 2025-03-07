@@ -43,7 +43,7 @@ export default function VideoWrapper({ course, topicsComponent, commentsComponen
       <div
         className={cn(
           'container mx-auto max-lg:order-2 max-lg:col-span-2 lg:row-span-2',
-          isWide.value ? 'lg:order-1' : 'lg:row-span-3'
+          isWide.value ? 'lg:order-1' : 'lg:row-span-3 lg:mt-4'
         )}
       >
         {topicsComponent}
