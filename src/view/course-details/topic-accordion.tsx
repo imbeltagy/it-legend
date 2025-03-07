@@ -33,7 +33,7 @@ export default function TopicAccordion({ item }: { item: TopicsData['topics'][nu
 function TopicItem({ item }: { item: TopicsData['topics'][number]['items'][number] }) {
   const t = useTranslations('CourseDetails.Topics');
   const router = useRouter();
-  const { setOpen, setPdfUrl } = useCoursePopupStore();
+  const { setPdfUrl, setExamId } = useCoursePopupStore();
 
   const handleClick = () => {
     if (item.status === TopicItemStatus.LOCKED) return;
@@ -44,8 +44,11 @@ function TopicItem({ item }: { item: TopicsData['topics'][number]['items'][numbe
 
     if (item.type === TopicItemType.PDF) {
       if (!item.pdfUrl) return;
-      setOpen(true);
       setPdfUrl(item.pdfUrl);
+    }
+
+    if (item.type === TopicItemType.EXAM) {
+      setExamId(item.id);
     }
   };
 

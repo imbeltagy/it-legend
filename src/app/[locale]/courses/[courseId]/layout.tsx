@@ -8,14 +8,16 @@ export default async function Layout({
   children: _children,
   comments,
   topics,
-  params,
   pdf,
+  exam,
+  params,
 }: {
   children: React.ReactNode;
   comments: React.ReactNode;
   topics: React.ReactNode;
-  params: Promise<{ courseId: string }>;
   pdf: React.ReactNode;
+  exam: React.ReactNode;
+  params: Promise<{ courseId: string }>;
 }) {
   const { courseId } = await params;
 
@@ -35,6 +37,7 @@ export default async function Layout({
         <VideoWrapper course={course} topicsComponent={topics} commentsComponent={comments} />
       </div>
       {pdf}
+      {exam}
     </div>
   );
 }

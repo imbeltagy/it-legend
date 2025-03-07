@@ -220,3 +220,129 @@ export const getTopics = async (_courseId: string) => {
     ],
   };
 };
+
+export const getQuestions = async (_topicId: string) => {
+  const locale = await getLocale();
+
+  return [
+    {
+      id: '1',
+      question: locale === 'en' ? 'What is SEO?' : 'ما هو SEO؟',
+      choices: [
+        {
+          id: 'a',
+          text: locale === 'en' ? 'Search Engine Optimization' : 'تحسين محركات البحث',
+        },
+        {
+          id: 'b',
+          text: locale === 'en' ? 'Social Engine Operation' : 'تشغيل المحرك الاجتماعي',
+        },
+        {
+          id: 'c',
+          text: locale === 'en' ? 'System Engine Output' : 'مخرجات محرك النظام',
+        },
+        {
+          id: 'd',
+          text: locale === 'en' ? 'Software Engineering Operations' : 'عمليات هندسة البرمجيات',
+        },
+      ],
+    },
+    {
+      id: '2',
+      question:
+        locale === 'en'
+          ? 'Which is NOT a factor in SEO ranking?'
+          : 'أي مما يلي ليس عاملاً في ترتيب SEO؟',
+      choices: [
+        {
+          id: 'a',
+          text: locale === 'en' ? 'Page loading speed' : 'سرعة تحميل الصفحة',
+        },
+        {
+          id: 'b',
+          text: locale === 'en' ? 'Website color scheme' : 'نظام ألوان الموقع',
+        },
+        {
+          id: 'c',
+          text: locale === 'en' ? 'Quality backlinks' : 'روابط خلفية عالية الجودة',
+        },
+        {
+          id: 'd',
+          text: locale === 'en' ? 'Mobile responsiveness' : 'التجاوب مع الأجهزة المحمولة',
+        },
+      ],
+    },
+    {
+      id: '3',
+      question: locale === 'en' ? 'What is a meta description?' : 'ما هو الوصف التعريفي؟',
+      choices: [
+        {
+          id: 'a',
+          text: locale === 'en' ? "A website's main heading" : 'العنوان الرئيسي للموقع',
+        },
+        {
+          id: 'b',
+          text: locale === 'en' ? 'A brief summary of page content' : 'ملخص موجز لمحتوى الصفحة',
+        },
+        {
+          id: 'c',
+          text: locale === 'en' ? "A website's domain name" : 'اسم نطاق الموقع',
+        },
+        {
+          id: 'd',
+          text: locale === 'en' ? 'An image description' : 'وصف الصورة',
+        },
+      ],
+    },
+    {
+      id: '4',
+      question: locale === 'en' ? 'What is keyword stuffing?' : 'ما هو حشو الكلمات المفتاحية؟',
+      choices: [
+        {
+          id: 'a',
+          text:
+            locale === 'en' ? 'Using keywords naturally' : 'استخدام الكلمات المفتاحية بشكل طبيعي',
+        },
+        {
+          id: 'b',
+          text:
+            locale === 'en'
+              ? 'Overusing keywords unnaturally'
+              : 'الإفراط في استخدام الكلمات المفتاحية بشكل غير طبيعي',
+        },
+        {
+          id: 'c',
+          text: locale === 'en' ? 'Not using any keywords' : 'عدم استخدام أي كلمات مفتاحية',
+        },
+        {
+          id: 'd',
+          text:
+            locale === 'en' ? 'Using synonyms for keywords' : 'استخدام مرادفات للكلمات المفتاحية',
+        },
+      ],
+    },
+    {
+      id: '5',
+      question: locale === 'en' ? 'What is a backlink?' : 'ما هو الرابط الخلفي؟',
+      choices: [
+        {
+          id: 'a',
+          text: locale === 'en' ? 'A link to your homepage' : 'رابط لصفحتك الرئيسية',
+        },
+        {
+          id: 'b',
+          text: locale === 'en' ? 'A broken link' : 'رابط معطل',
+        },
+        {
+          id: 'c',
+          text:
+            locale === 'en' ? 'A link from another website to yours' : 'رابط من موقع آخر إلى موقعك',
+        },
+        {
+          id: 'd',
+          text: locale === 'en' ? 'A link to your sitemap' : 'رابط لخريطة موقعك',
+        },
+      ],
+    },
+  ];
+};
