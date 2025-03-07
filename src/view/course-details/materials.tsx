@@ -61,12 +61,12 @@ export default function Materials({ course }: { course: Course }) {
   );
 
   return (
-    <div className="container mx-auto w-full rounded-lg max-md:p-8 max-md:shadow-[-30px_-31px_106px_-94px_rgba(0,0,0,0.5)]">
-      <h2 className="text-xl font-bold tracking-wide md:text-3xl">{t('title')}</h2>
+    <div className="container mx-auto w-full rounded-lg max-lg:p-8 max-lg:shadow-[-30px_-31px_106px_-94px_rgba(0,0,0,0.5)]">
+      <h2 className="text-xl font-bold tracking-wide lg:text-3xl">{t('title')}</h2>
 
-      <div className="mt-5 grid rounded-lg md:mt-8 md:grid-cols-2 md:gap-20 md:px-10 md:py-8 md:shadow-[0px_0px_177px_-60px_rgba(0,0,0,0.44)]">
+      <div className="mt-5 grid rounded-lg lg:mt-8 lg:grid-cols-2 lg:gap-20 lg:px-10 lg:py-8 lg:shadow-[0px_0px_177px_-60px_rgba(0,0,0,0.44)]">
         {renderColumn}
-        <div className="hidden md:block">{renderColumn}</div>
+        <div className="hidden lg:block">{renderColumn}</div>
       </div>
     </div>
   );

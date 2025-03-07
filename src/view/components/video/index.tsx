@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils/style';
 import useBoolean from '@/lib/hooks/useBoolean';
-import { useRef, useState, useEffect } from 'react';
+import { memo, useRef, useState, useEffect } from 'react';
 
 import { Iconify } from '../iconify';
 
@@ -12,7 +12,7 @@ interface VideoProps {
   onWideToggle: () => void;
 }
 
-export default function Video({ videoUrl, isWide, onWideToggle }: VideoProps) {
+const Video = memo(function ({ videoUrl, isWide, onWideToggle }: VideoProps) {
   const { value: isPlaying, toggle: toggleIsPlaying } = useBoolean(false);
   const { value: isMuted, toggle: toggleIsMuted, set: setIsMuted } = useBoolean(false);
   const { value: hasPlayedOnce, set: setHasPlayedOnce } = useBoolean(false);
@@ -233,4 +233,6 @@ export default function Video({ videoUrl, isWide, onWideToggle }: VideoProps) {
       )}
     </div>
   );
-}
+});
+
+export default Video;

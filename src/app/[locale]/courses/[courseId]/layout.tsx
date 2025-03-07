@@ -33,7 +33,7 @@ export default async function Layout({
           { label: 'course_details' },
         ]}
       />
-      <div className="mx-auto lg:container">
+      <div className="mx-auto pb-8 lg:container">
         <VideoWrapper course={course} topicsComponent={topics} commentsComponent={comments} />
       </div>
       {pdf}
