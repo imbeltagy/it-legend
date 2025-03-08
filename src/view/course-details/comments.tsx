@@ -50,7 +50,7 @@ function AddComment() {
   const t = useTranslations('CourseDetails.Comments');
 
   return (
-    <div className="from-neutral to-default -mx-8 mt-10 rounded-lg px-8 pt-4 pb-8 max-lg:bg-gradient-to-b">
+    <div className="from-neutral to-default mt-10 rounded-lg px-8 pt-4 pb-8 max-lg:bg-gradient-to-b lg:px-0">
       <div className="container mx-auto">
         <textarea
           className="bg-default block w-full p-4 py-6 focus:outline-none lg:shadow-[0px_0px_130px_0px_rgba(0,0,0,0.1)] [&::placeholder]:font-bold"

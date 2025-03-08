@@ -64,7 +64,7 @@ const NavigationIcons = memo(function ({
 }: {
   videoContainerRef: React.RefObject<HTMLDivElement | null>;
 }) {
-  const { set: setQuery } = useQuery(['leaderboard', 'ask']);
+  const { set: setQuery } = useQuery(['leaderboard', 'ask'], { replace: true });
 
   const scrollToElement = useCallback(
     (elementId: string) => {
