@@ -3,6 +3,7 @@
 import { cn } from '@/lib/utils/style';
 import { Course } from '@/lib/types/courses';
 import useBoolean from '@/lib/hooks/useBoolean';
+import { useQuery } from '@/lib/hooks/useQuery';
 import { memo, useRef, useMemo, useCallback } from 'react';
 
 import Materials from './materials';
@@ -63,6 +64,8 @@ const NavigationIcons = memo(function ({
 }: {
   videoContainerRef: React.RefObject<HTMLDivElement | null>;
 }) {
+  const { set: setQuery } = useQuery(['leaderboard', 'ask']);
+
   const scrollToElement = useCallback(
     (elementId: string) => {
       const element = document.getElementById(elementId);
@@ -83,8 +86,8 @@ const NavigationIcons = memo(function ({
     () => [
       { id: 'topics', icon: 'mdi:book-open-variant' },
       { id: 'comments', icon: 'mdi:comment-multiple' },
-      { id: 'leaderboard', icon: 'mdi:trophy' },
-      { id: 'ask-question', icon: 'mdi:help-circle' },
+      { query: 'leaderboard', icon: 'mdi:trophy' },
+      { query: 'ask', icon: 'mdi:help-circle' },
     ],
     []
   );
@@ -93,9 +96,13 @@ const NavigationIcons = memo(function ({
     <div className="mt-4 flex items-center gap-4 max-lg:justify-center lg:mt-10">
       {navigationButtons.map((button) => (
         <button
-          key={button.id}
+          key={button.id || button.query}
           className="icon-button cursor-pointer"
-          onClick={() => scrollToElement(button.id)}
+          onClick={() =>
+            button.id && !button.query
+              ? scrollToElement(button.id)
+              : setQuery({ [button.query as 'leaderboard' | 'ask']: true })
+          }
         >
           <Iconify icon={button.icon} />
         </button>

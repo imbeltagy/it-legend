@@ -10,15 +10,11 @@ export default async function Layout({
   topics,
   pdf,
   exam,
+  leaderboard,
   params,
 }: {
-  children: React.ReactNode;
-  comments: React.ReactNode;
-  topics: React.ReactNode;
-  pdf: React.ReactNode;
-  exam: React.ReactNode;
   params: Promise<{ courseId: string }>;
-}) {
+} & Record<'children' | 'leaderboard' | 'comments' | 'topics' | 'pdf' | 'exam', React.ReactNode>) {
   const { courseId } = await params;
 
   const course = await getCourse(courseId);
@@ -38,6 +34,7 @@ export default async function Layout({
       </div>
       {pdf}
       {exam}
+      {leaderboard}
     </div>
   );
 }
