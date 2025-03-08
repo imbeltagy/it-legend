@@ -117,7 +117,7 @@ const Video = memo(function ({ videoUrl, isWide, onWideToggle }: VideoProps) {
     <div ref={containerRef} className="group relative flex overflow-hidden rounded-lg bg-black">
       <video
         ref={videoRef}
-        poster="https://thumbnailmakerpro.com/images/custom/thumb2.jpg"
+        poster="/videos/thumbnail.jpg"
         className={`w-full cursor-pointer self-center ${!isFullScreen && isWide ? 'aspect-[21/9]' : 'aspect-video'}`}
         onTimeUpdate={handleTimeUpdate}
         onClick={togglePlay}
