@@ -1,14 +1,14 @@
 import { useMemo, Fragment } from 'react';
 import { useTranslations } from 'next-intl';
-import { Course } from '@/lib/types/courses';
 import { Iconify } from '@/view/components/iconify';
+import { Materials as IMaterials } from '@/lib/types/courses';
 
-export default function Materials({ course }: { course: Course }) {
+export default function Materials({ materials }: { materials: IMaterials }) {
   const t = useTranslations('CourseDetails.Materials');
 
   const fields = useMemo(() => {
     let students = '';
-    switch (course.materials.students) {
+    switch (materials.students) {
       case 1:
         students = t('student');
         break;
@@ -16,18 +16,18 @@ export default function Materials({ course }: { course: Course }) {
         students = t('2_students');
         break;
       default:
-        students = t('students', { count: course.materials.students });
+        students = t('students', { count: materials.students });
     }
 
     return [
       {
         label: 'duration',
-        value: course.materials.duration,
+        value: materials.duration,
         icon: <Iconify icon="mdi:clock" />,
       },
       {
         label: 'lessons',
-        value: course.materials.lessons,
+        value: materials.lessons,
         icon: <Iconify icon="mdi:book" />,
       },
       {
@@ -37,11 +37,11 @@ export default function Materials({ course }: { course: Course }) {
       },
       {
         label: 'language',
-        value: course.materials.language,
+        value: materials.language,
         icon: <Iconify icon="mdi:language" />,
       },
     ];
-  }, [course, t]);
+  }, [materials, t]);
 
   const renderColumn = (
     <div>

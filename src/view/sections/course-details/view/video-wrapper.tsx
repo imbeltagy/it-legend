@@ -3,21 +3,25 @@
 import { cn } from '@/lib/utils/style';
 import Video from '@/view/components/video';
 import { Course } from '@/lib/types/courses';
-import useBoolean from '@/lib/hooks/useBoolean';
 import { useQuery } from '@/lib/hooks/useQuery';
 import { Iconify } from '@/view/components/iconify';
 import { memo, useRef, useMemo, useCallback } from 'react';
-
-import Materials from './materials';
+import useVideoStore from '@/view/components/video/video-store';
 
 interface Props {
   course: Course;
+  materials: React.ReactNode;
   topicsComponent: React.ReactNode;
   commentsComponent: React.ReactNode;
 }
 
-export default function VideoWrapper({ course, topicsComponent, commentsComponent }: Props) {
-  const isWide = useBoolean();
+export default function VideoWrapper({
+  course,
+  materials,
+  topicsComponent,
+  commentsComponent,
+}: Props) {
+  const { isWide } = useVideoStore();
   const videoContainerRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -32,11 +36,11 @@ export default function VideoWrapper({ course, topicsComponent, commentsComponen
         ref={videoContainerRef}
         className={cn(
           'bg-default shadow-default top-0 z-50 col-span-2 py-4 max-lg:sticky max-lg:shadow-[0_4px_10px_-1px]',
-          !isWide.value && 'lg:col-span-1'
+          !isWide && 'lg:col-span-1'
         )}
       >
         <div className="container mx-auto">
-          <Video videoUrl={course.video} isWide={isWide.value} onWideToggle={isWide.toggle} />
+          <Video videoUrl={course.video} />
           <NavigationIcons videoContainerRef={videoContainerRef} />
         </div>
       </div>
@@ -44,15 +48,13 @@ export default function VideoWrapper({ course, topicsComponent, commentsComponen
       <div
         className={cn(
           'container mx-auto max-lg:order-2 max-lg:col-span-2 lg:row-span-5',
-          isWide.value ? 'lg:order-1' : 'lg:mt-4'
+          isWide ? 'lg:order-1' : 'lg:mt-4'
         )}
       >
         {topicsComponent}
       </div>
 
-      <div className="max-lg:col-span-2">
-        <Materials course={course} />
-      </div>
+      <div className="max-lg:col-span-2">{materials}</div>
 
       <div className="order-3 max-lg:col-span-2">{commentsComponent}</div>
     </div>

@@ -5,14 +5,14 @@ import useBoolean from '@/lib/hooks/useBoolean';
 import { memo, useRef, useState, useEffect } from 'react';
 
 import { Iconify } from '../iconify';
+import useVideoStore from './video-store';
 
 interface VideoProps {
   videoUrl: string;
-  isWide: boolean;
-  onWideToggle: () => void;
 }
 
-const Video = memo(function ({ videoUrl, isWide, onWideToggle }: VideoProps) {
+const Video = memo(function ({ videoUrl }: VideoProps) {
+  const { isWide, toggleWide } = useVideoStore();
   const { value: isPlaying, toggle: toggleIsPlaying } = useBoolean(false);
   const { value: isMuted, toggle: toggleIsMuted, set: setIsMuted } = useBoolean(false);
   const { value: hasPlayedOnce, set: setHasPlayedOnce } = useBoolean(false);
@@ -206,7 +206,7 @@ const Video = memo(function ({ videoUrl, isWide, onWideToggle }: VideoProps) {
                 {/* Wide toggle button - only shown when not in fullscreen */}
                 {!isFullScreen && (
                   <button
-                    onClick={onWideToggle}
+                    onClick={toggleWide}
                     className="cursor-pointer p-2 text-2xl text-white transition-colors duration-200 hover:text-gray-300 max-lg:hidden"
                     title={isWide ? 'Normal view' : 'Wide view'}
                   >
