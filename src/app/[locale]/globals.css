@@ -144,7 +144,7 @@
 
 @layer components {
   .icon-button {
-    @apply border-divider hover:bg-secondary hover:text-default text-secondary block rounded-full border p-3 text-2xl transition-colors;
+    @apply border-divider active:bg-secondary active:text-default hover:bg-secondary hover:text-default text-secondary block rounded-full border p-3 text-2xl transition-colors;
   }
   .button {
     @apply flex cursor-pointer items-center gap-1 rounded-md px-8 py-4 font-bold transition-colors;
