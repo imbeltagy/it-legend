@@ -4,11 +4,10 @@ import { useMemo } from 'react';
 import { cn } from '@/lib/utils/style';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { Iconify } from '@/view/components/iconify';
+import Accordion from '@/view/components/accordion';
 import useCoursePopupStore from '@/lib/context/course-popup';
 import { TopicsData, TopicItemType, TopicItemStatus } from '@/lib/types/courses';
-
-import { Iconify } from '../components/iconify';
-import Accordion from '../components/accordion';
 
 export default function TopicAccordion({ item }: { item: TopicsData['topics'][number] }) {
   const renderTrigger = (

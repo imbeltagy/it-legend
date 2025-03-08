@@ -1,6 +1,6 @@
 import { TopicsData } from '@/lib/types/courses';
-import CourseTopics from '@/view/course-details/topics';
 import { getTopics } from '@/lib/actions/course-actions';
+import CourseTopics from '@/view/sections/course-details/topics';
 
 export default async function Page({ params }: { params: Promise<{ courseId: string }> }) {
   const { courseId } = await params;

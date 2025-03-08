@@ -1,8 +1,7 @@
 import { useMemo, Fragment } from 'react';
 import { useTranslations } from 'next-intl';
 import { Course } from '@/lib/types/courses';
-
-import { Iconify } from '../components/iconify';
+import { Iconify } from '@/view/components/iconify';
 
 export default function Materials({ course }: { course: Course }) {
   const t = useTranslations('CourseDetails.Materials');

@@ -2,7 +2,7 @@ import { Locale } from '@/lib/types/i18n';
 import Header from '@/view/components/header';
 import { getTranslations } from 'next-intl/server';
 import { getCourse } from '@/lib/actions/course-actions';
-import VideoWrapper from '@/view/course-details/video-wrapper';
+import VideoWrapper from '@/view/sections/course-details/video-wrapper';
 
 export default async function Layout({
   children: _children,

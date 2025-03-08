@@ -2,8 +2,7 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import { useTranslations } from 'next-intl';
 import { Comment } from '@/lib/types/courses';
-
-import { Iconify } from '../components/iconify';
+import { Iconify } from '@/view/components/iconify';
 
 export default function CourseComments({ comments }: { comments: Comment[] }) {
   const t = useTranslations('CourseDetails.Comments');

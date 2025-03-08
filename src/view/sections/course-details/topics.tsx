@@ -1,8 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { TopicsData } from '@/lib/types/courses';
-
-import Progress from '../components/progress';
-import TopicAccordion from './topic-accordion';
+import Progress from '@/view/components/progress';
+import TopicAccordion from '@/view/sections/course-details/topic-accordion';
 
 export default function CourseTopics({ topics }: { topics: TopicsData }) {
   const t = useTranslations('CourseDetails.Topics');

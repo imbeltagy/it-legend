@@ -1,14 +1,14 @@
 'use client';
 
 import { cn } from '@/lib/utils/style';
+import Video from '@/view/components/video';
 import { Course } from '@/lib/types/courses';
 import useBoolean from '@/lib/hooks/useBoolean';
 import { useQuery } from '@/lib/hooks/useQuery';
+import { Iconify } from '@/view/components/iconify';
 import { memo, useRef, useMemo, useCallback } from 'react';
 
 import Materials from './materials';
-import Video from '../components/video';
-import { Iconify } from '../components/iconify';
 
 interface Props {
   course: Course;
