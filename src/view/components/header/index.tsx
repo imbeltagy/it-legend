@@ -8,6 +8,8 @@ import {
   BreadcrumbSeparator,
 } from '@/view/components/ui/breadcrumb';
 
+import { LocaleButton } from '../locale-button';
+
 interface Props {
   title: string;
   breadcrumbs: {
@@ -39,7 +41,10 @@ export default function Header({ title, breadcrumbs }: Props) {
   return (
     <div className="bg-neutral">
       <div className="container mx-auto py-4">
-        {renderBreadcrumbs}
+        <div className="flex items-center justify-between">
+          {renderBreadcrumbs}
+          <LocaleButton />
+        </div>
         <h1 className="mt-3 text-3xl font-bold tracking-wide md:mt-6 md:text-4xl">{title}</h1>
       </div>
     </div>
