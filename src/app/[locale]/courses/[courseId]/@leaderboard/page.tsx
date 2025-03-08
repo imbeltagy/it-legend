@@ -1,15 +1,11 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useQuery } from '@/lib/hooks/useQuery';
 import { Iconify } from '@/view/components/iconify';
+import useCoursePopupStore from '@/lib/context/course-popup';
 
 export default function LeaderboardPage() {
-  const {
-    values: { leaderboard },
-    set: setQuery,
-  } = useQuery(['leaderboard']);
-
+  const { leaderboard, setLeaderboard } = useCoursePopupStore();
   const locale = useLocale();
 
   if (!leaderboard) return null;
@@ -17,7 +13,7 @@ export default function LeaderboardPage() {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-      onClick={() => setQuery({ leaderboard: null })}
+      onClick={() => setLeaderboard(false)}
     >
       <div
         className="relative mx-4 grid max-h-[90vh] w-full max-w-md rounded-lg bg-white p-6"
@@ -50,7 +46,7 @@ export default function LeaderboardPage() {
 
         {/* Close Button */}
         <button
-          onClick={() => setQuery({ leaderboard: null })}
+          onClick={() => setLeaderboard(false)}
           className="absolute -top-2 -right-2 cursor-pointer rounded-full bg-white p-1 shadow-lg hover:bg-neutral-100"
         >
           <Iconify icon="ph:x-bold" className="text-xl" />

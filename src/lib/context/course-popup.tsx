@@ -5,6 +5,10 @@ type Store = {
   setPdfUrl: (pdfUrl: string | null) => void;
   examId: string | null;
   setExamId: (examId: string | null) => void;
+  ask: boolean;
+  setAsk: (ask: boolean) => void;
+  leaderboard: boolean;
+  setLeaderboard: (leaderboard: boolean) => void;
 };
 
 const useCoursePopupStore = create<Store>()((set) => ({
@@ -12,6 +16,10 @@ const useCoursePopupStore = create<Store>()((set) => ({
   setPdfUrl: (pdfUrl) => set({ pdfUrl }),
   examId: null,
   setExamId: (examId) => set({ examId }),
+  ask: false,
+  setAsk: (ask) => set({ ask }),
+  leaderboard: false,
+  setLeaderboard: (leaderboard) => set({ leaderboard }),
 }));
 
 export default useCoursePopupStore;

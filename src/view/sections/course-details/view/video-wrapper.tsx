@@ -3,9 +3,9 @@
 import { cn } from '@/lib/utils/style';
 import Video from '@/view/components/video';
 import { Course } from '@/lib/types/courses';
-import { useQuery } from '@/lib/hooks/useQuery';
 import { Iconify } from '@/view/components/iconify';
 import { memo, useRef, useMemo, useCallback } from 'react';
+import useCoursePopupStore from '@/lib/context/course-popup';
 import useVideoStore from '@/view/components/video/video-store';
 
 interface Props {
@@ -66,7 +66,7 @@ const NavigationIcons = memo(function ({
 }: {
   videoContainerRef: React.RefObject<HTMLDivElement | null>;
 }) {
-  const { set: setQuery } = useQuery(['leaderboard', 'ask'], { replace: true });
+  const { setLeaderboard, setAsk } = useCoursePopupStore();
 
   const scrollToElement = useCallback(
     (elementId: string) => {
@@ -88,23 +88,19 @@ const NavigationIcons = memo(function ({
     () => [
       { id: 'topics', icon: 'mdi:book-open-variant' },
       { id: 'comments', icon: 'mdi:comment-multiple' },
-      { query: 'leaderboard', icon: 'mdi:trophy' },
-      { query: 'ask', icon: 'mdi:help-circle' },
+      { action: () => setLeaderboard(true), icon: 'mdi:trophy' },
+      { action: () => setAsk(true), icon: 'mdi:help-circle' },
     ],
-    []
+    [setLeaderboard, setAsk]
   );
 
   return (
     <div className="mt-4 flex items-center gap-4 max-lg:justify-center lg:mt-10">
       {navigationButtons.map((button) => (
         <button
-          key={button.id || button.query}
+          key={button.id || button.icon}
           className="icon-button cursor-pointer"
-          onClick={() =>
-            button.id && !button.query
-              ? scrollToElement(button.id)
-              : setQuery({ [button.query as 'leaderboard' | 'ask']: true })
-          }
+          onClick={() => (button.id ? scrollToElement(button.id) : button.action?.())}
         >
           <Iconify icon={button.icon} />
         </button>
